@@ -53,7 +53,7 @@ NIRI_MIRROR_NOTIFY=notification niri-mirror toggle   # 临时改成通知中心
 `niri-mirror --list-outputs`。
 
 ```sh
-noctalia msg plugins source add local-dev path ~/dev/noctalia-plugins   # 只需一次
+noctalia msg plugins source add local-dev path /path/to/noctalia-plugins   # 只需一次
 noctalia msg plugins enable goldesquemoon/screen-mirror
 noctalia msg settings-open-plugin goldesquemoon/screen-mirror           # 打开设置页
 ```
