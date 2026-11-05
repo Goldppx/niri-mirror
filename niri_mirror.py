@@ -934,7 +934,11 @@ class ControlServer(threading.Thread):
         cmd = (request.get("cmd") or "status").lower()
         if cmd == "status":
             return {"ok": True, **self.manager.status()}
-        if cmd == "reload":
+        if cmd in {"reload", "ensure"}:
+            # `ensure` is implemented by the client as "start me if I am not
+            # running"; once we are answering it, the only thing left is a
+            # config reconcile. Reporting it as unknown made every `ensure`
+            # against a live daemon fail.
             if self.reload_config:
                 status = self.reload_config()
             else:
